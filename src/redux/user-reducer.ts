@@ -11,7 +11,7 @@ const userInitialState: UserState = {
   CreatedAt: new Date(),
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export const userReducer = (
   state: UserState = userInitialState,
   action: UserAction
