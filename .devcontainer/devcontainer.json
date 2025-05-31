@@ -1,4 +1,7 @@
 {
-    "name": "DAE vite react",
-    "dockerFile":"dockerfile"
+    "name": "dae vite react",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "workspaceFolder": "/workspaces/dae-vite-fe",
+    "postCreateCommand": "yarn install"
 }
