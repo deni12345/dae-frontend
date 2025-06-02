@@ -6,7 +6,7 @@ export type UserState = {
   name: string;
   email: string;
   birthdate: string;
-  CreatedAt: Date;
+  createdAt?: string;
 };
 
 export enum UserActionEnum {
