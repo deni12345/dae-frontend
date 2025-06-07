@@ -4,6 +4,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { userSlice } from "./redux/user-slice";
 import { userSelector } from "./redux/user-slice";
+import { Button } from "./components/ui/button";
 
 function App() {
   const user = useSelector(userSelector);
@@ -29,7 +30,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={setUserHandler}>click to set user</button>
+        <Button onClick={setUserHandler}>click to set user</Button>
         <p>
           user:{user.name}
           <br />
