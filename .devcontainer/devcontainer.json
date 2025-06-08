@@ -3,5 +3,5 @@
     "dockerFile": "Dockerfile",
     "context": "..",
     "workspaceFolder": "/workspaces/dae-vite-fe",
-    "postCreateCommand": "yarn install"
+    "postCreateCommand": "corepack yarn install"
 }
