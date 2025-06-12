@@ -28,7 +28,7 @@ export function AppSidebar({ header, groupItems }: AppSidebarProps) {
   }, [setOpen, open]);
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="!border-0">
       <SidebarHeader>
         <SidebarMenuButton
           onClick={handlerSidebarToggle}

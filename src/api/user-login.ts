@@ -1,8 +1,9 @@
-import HttpClient from "./axios";
+import { httpClient } from "./axios";
+
 
 export default async function UserLogin() {
   try {
-    const resp = await HttpClient.post("/user/login", {});
+    const resp = await httpClient.post("/user/login", {});
     return resp.data;
   } catch (error) {
     console.error("Error during user login:", error);
