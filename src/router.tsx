@@ -1,11 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import DashboardView from "./view/DashboardView";
+import UserSettingView from "./view/UserSettingView";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [],
+    children: [
+      {
+        path: "dashboard",
+        element: <DashboardView />,
+      },
+      {
+        path: "user-setting",
+        element: <UserSettingView />,
+      },
+    ],
   },
   {
     path: "*",

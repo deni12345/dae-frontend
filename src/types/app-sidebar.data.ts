@@ -1,6 +1,6 @@
 import { LayoutDashboard, Settings, UserRound } from "lucide-react";
-import type {} from "./app-sidebar";
-import type { GroupMenuItem } from "./app-sidebar.types";
+import type {} from "../components/app-sidebar/AppSidebar";
+import type { GroupMenuItem } from "../components/app-sidebar/AppSidebar.types";
 
 export const sidebarMenuItems: GroupMenuItem[] = [
   {

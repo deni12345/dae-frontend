@@ -1,28 +1,21 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { userSlice } from "./redux/user-slice";
-import { userSelector } from "./redux/user-slice";
+import { testDispatch } from "./redux/userSlice";
+import { userSelector } from "./redux/userSlice";
 import { SidebarProvider } from "./components/ui/sidebar";
-import { AppSidebar } from "./components/app-sidebar/app-sidebar";
-import { sidebarMenuItems } from "./components/app-sidebar/app-sidebar.data";
+import { AppSidebar } from "./components/app-sidebar/AppSidebar";
+import { sidebarMenuItems } from "./types/app-sidebar.data";
 import { useCallback, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
-import reactLogo from './assets/react.svg';
+import reactLogo from "./assets/react.svg";
 import { Outlet } from "react-router-dom";
+import type { AppDispatch } from "./redux/store";
 
 function App() {
   const user = useSelector(userSelector);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const setUserHandler = useCallback(
-    () =>
-      dispatch(
-        userSlice.actions.setUser({
-          name: "John Doe",
-          email: "nondasdase",
-          birthdate: "sdsadsadasdsds",
-          createdAt: Date(),
-        })
-      ),
+    () => dispatch(testDispatch("liem")),
     [dispatch]
   );
 
@@ -36,9 +29,9 @@ function App() {
 
   return (
     <SidebarProvider>
-      <AppSidebar header={"Drind And Eat"} groupItems={sidebarMenuItems} />
+      <AppSidebar title={"Drind And Eat"} groups={sidebarMenuItems} />
       <main className="w-full flex flex-col dark:bg-background">
-        <header className="p-5 h-15 flex justify-between border-accent border-b-1">
+        <header className="p-5 h-15 flex justify-between border-border border-b-1">
           <h1 className="text-white font-bold">Welcome to Drind And Eat</h1>
           <Avatar>
             <AvatarImage src={reactLogo} alt="React Logo" />
