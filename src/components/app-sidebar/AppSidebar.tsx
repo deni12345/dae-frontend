@@ -14,6 +14,7 @@ import {
 import { PanelRight } from "lucide-react";
 import { useCallback } from "react";
 import type { GroupMenuItem, MenuItem } from "./AppSidebar.types";
+import { Link } from "react-router-dom";
 
 type AppSidebarProps = {
   title: string;
@@ -22,7 +23,7 @@ type AppSidebarProps = {
 
 export function AppSidebar({ title, groups }: AppSidebarProps) {
   return (
-    <Sidebar collapsible="icon" className="!border-0">
+    <Sidebar collapsible="icon" className="border-sidebar-accent">
       <SidebarHeaderWithIcon title={title} />
       <SidebarContent>
         <SidebarGroupMenu groups={groups} />
@@ -48,10 +49,12 @@ function SidebarMenuWithIcons({ items }: { items: MenuItem[] }) {
     <SidebarMenu>
       {items.map((item, index) => (
         <SidebarMenuItem key={index}>
-          <SidebarMenuButton onClick={item.onClick}>
-            <item.icon />
-            {item.title}
-          </SidebarMenuButton>
+          <Link to={item.href || "#"}>
+            <SidebarMenuButton onClick={item.onClick}>
+              <item.icon />
+              {item.title}
+            </SidebarMenuButton>
+          </Link>
         </SidebarMenuItem>
       ))}
     </SidebarMenu>
