@@ -2,7 +2,7 @@ import "./App.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar/AppSidebar";
 import { menuItems } from "@/types/AppSidebar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import reactLogo from "@/assets/react.svg";
 import { Outlet } from "react-router-dom";
