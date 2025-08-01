@@ -15,7 +15,7 @@ const templateHtml = isProduction
 const ssrManifest = isProduction
   ? JSON.parse(
       await fs.readFile(
-        resolve(__dirname, "./dist/client/.vite/ssr-manifest.json"),
+        resolve(__dirname, "../dist/client/.vite/ssr-manifest.json"),
         "utf-8"
       )
     )
@@ -40,7 +40,7 @@ async function start() {
     app.use(compression());
     app.use(
       base,
-      sirv(resolve(__dirname, "./dist/client"), {
+      sirv(resolve(__dirname, "../dist/client"), {
         extensions: [], // disables automatic .html lookup
         single: false, // disables fallback to index.html
       })
