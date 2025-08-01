@@ -14,7 +14,10 @@ const templateHtml = isProduction
   : "";
 const ssrManifest = isProduction
   ? JSON.parse(
-      await fs.readFile("./dist/client/.vite/ssr-manifest.json", "utf-8")
+      await fs.readFile(
+        resolve(__dirname, "./dist/client/.vite/ssr-manifest.json"),
+        "utf-8"
+      )
     )
   : undefined;
 
@@ -37,7 +40,7 @@ async function start() {
     app.use(compression());
     app.use(
       base,
-      sirv("./dist/client", {
+      sirv(resolve(__dirname, "./dist/client"), {
         extensions: [], // disables automatic .html lookup
         single: false, // disables fallback to index.html
       })
@@ -56,7 +59,9 @@ async function start() {
         render = (await vite.ssrLoadModule("/src/entry-server.jsx")).render;
       } else {
         template = templateHtml;
-        render = (await import("../dist/server/entry-server.js")).render;
+        render = (
+          await import(resolve(__dirname, "../dist/server/entry-server.js"))
+        ).render;
       }
 
       const rendered = await render({ path: url }, ssrManifest);
