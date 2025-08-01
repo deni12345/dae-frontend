@@ -9,9 +9,10 @@ type LineStyle = {
 
 export function AppTabs({
   children,
+  defaultValue,
   ...props
 }: React.ComponentProps<typeof Tabs>) {
-  const [activeTab, setActiveTab] = useState<string>("account");
+  const [activeTab, setActiveTab] = useState<string>(defaultValue ?? "");
   const [lineStyle, setLineStyle] = useState<LineStyle | null>(null);
 
   const onValueChange = useCallback(
@@ -23,8 +24,9 @@ export function AppTabs({
 
   // Update underline position when active tab changes
   useEffect(() => {
-    const activeTabElement = document.querySelector("[data-state='active']");
-
+    const activeTabElement = Array.from(
+      document.querySelectorAll('button[data-state="active"]')
+    ).find((button) => button.textContent?.trim() == activeTab);
     if (activeTabElement) {
       const { width, left, bottom } = activeTabElement.getBoundingClientRect();
       setLineStyle({
@@ -36,7 +38,12 @@ export function AppTabs({
   }, [activeTab]);
 
   return (
-    <Tabs value={activeTab} onValueChange={onValueChange} {...props}>
+    <Tabs
+      value={activeTab}
+      onValueChange={onValueChange}
+      defaultValue={defaultValue}
+      {...props}
+    >
       {children}
       {lineStyle && (
         <div
