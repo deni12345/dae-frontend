@@ -9,10 +9,10 @@ import Router from "@/router";
 hydrateRoot(
   document.getElementById("root") as HTMLElement,
   <StrictMode>
-      <Provider store={store}>
+    <Provider store={store}>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-      </Provider>
+    </Provider>
   </StrictMode>
 );

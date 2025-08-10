@@ -1,7 +1,4 @@
-import Dashboard from './Dashboard';
-import UserSetting from './UserSetting'
+import Dashboard from "./Dashboard/Dashboard";
+import UserSetting from "./UserSetting";
 
-export {
-  Dashboard,
-  UserSetting
-};
+export { Dashboard, UserSetting };

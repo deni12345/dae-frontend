@@ -1,3 +1,4 @@
-import type { RootState } from "./store";
+import { useSelector } from "react-redux";
+import { type RootState } from "./store";
 
-export const userSelector = (state: RootState) => state.user;
+export const userState = useSelector((state: RootState) => state.user);

@@ -1,5 +1,5 @@
 import { Tabs } from "@/components/ui/tabs";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type LineStyle = {
   width: number;
@@ -7,26 +7,20 @@ type LineStyle = {
   top: number;
 };
 
-export function AppTabs({
+export function TabsContainer({
   children,
   defaultValue,
+  onValueChange,
+  value,
   ...props
 }: React.ComponentProps<typeof Tabs>) {
-  const [activeTab, setActiveTab] = useState<string>(defaultValue ?? "");
   const [lineStyle, setLineStyle] = useState<LineStyle | null>(null);
-
-  const onValueChange = useCallback(
-    (value: string) => {
-      setActiveTab(value);
-    },
-    [setActiveTab]
-  );
 
   // Update underline position when active tab changes
   useEffect(() => {
     const activeTabElement = Array.from(
       document.querySelectorAll('button[data-state="active"]')
-    ).find((button) => button.textContent?.trim() == activeTab);
+    ).find((button) => button.textContent?.trim() == value);
     if (activeTabElement) {
       const { width, left, bottom } = activeTabElement.getBoundingClientRect();
       setLineStyle({
@@ -35,11 +29,11 @@ export function AppTabs({
         top: bottom + 3, // Add 2px spacing between tab and underline
       });
     }
-  }, [activeTab]);
+  }, [value]);
 
   return (
     <Tabs
-      value={activeTab}
+      value={value}
       onValueChange={onValueChange}
       defaultValue={defaultValue}
       {...props}
