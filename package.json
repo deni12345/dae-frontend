@@ -25,6 +25,7 @@
     "clsx": "^2.1.1",
     "compression": "^1.8.1",
     "cross-env": "^10.0.0",
+    "embla-carousel-react": "^8.6.0",
     "express": "^5.1.0",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",

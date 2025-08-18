@@ -11,9 +11,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import type { GroupMenuItem, MenuItem } from "@/types/AppSidebar";
 import { PanelRight } from "lucide-react";
 import { useCallback } from "react";
-import type { GroupMenuItem, MenuItem } from "./AppSidebar.types";
 import { Link } from "react-router-dom";
 
 type AppSidebarProps = {

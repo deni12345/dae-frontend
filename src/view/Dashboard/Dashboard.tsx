@@ -1,8 +1,5 @@
 import { TabsContainer } from "@/components/app-tabs/AppTabs";
-import { Button } from "@/components/ui/button";
-import { TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus } from "lucide-react";
-import { useMemo, useState, type ReactElement } from "react";
+import { useMemo, useState } from "react";
 import TabHeader from "./TabHeader";
 import TabContent from "./TabContent";
 import DashboardMenu from "./Menu";
@@ -12,9 +9,15 @@ const mockSheetTabs = [
     sheet: "Happy Party",
     menu: {
       foods: [
-        { name: "Pizza", price: 10 },
-        { name: "Burger", price: 8 },
-        { name: "Salad", price: 5 },
+        { name: "Pizza 1", price: 10 },
+        { name: "Burger 2", price: 8 },
+        { name: "Salad 3", price: 5 },
+        { name: "Burger 4", price: 8 },
+        { name: "Salad 5", price: 5 },
+        { name: "Pizza 6", price: 10 },
+        { name: "Burger 7", price: 8 },
+        { name: "Salad 8", price: 5 },
+        { name: "Burger 9", price: 8 },
       ],
       drinks: [
         { name: "Coke", price: 2 },
@@ -74,7 +77,7 @@ const Dashboard = () => {
 
   return (
     <TabsContainer
-      className="w-full h-full gap-4"
+      className="w-full h-full gap-4 flex-nowrap"
       value={activeSheetTab}
       onValueChange={setActiveSheetTab}
       defaultValue={sheetTabs[0]}

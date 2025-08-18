@@ -1,12 +1,12 @@
 import "./App.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar/AppSidebar";
-import { menuItems } from "@/types/AppSidebar";
 import { useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import reactLogo from "@/assets/react.svg";
 import { Outlet } from "react-router-dom";
 import { useGetHealthQuery } from "./api/apiService";
+import { menuItems } from "@/components";
 
 function App() {
   const { data, isSuccess } = useGetHealthQuery();
@@ -20,7 +20,7 @@ function App() {
   return (
     <SidebarProvider>
       <AppSidebar title={"Drind And Eat"} groups={menuItems} />
-      <main className="w-full flex flex-col bg-background">
+      <main className="flex flex-col bg-background flex-1 min-w-0">
         <header className="p-5 h-15 flex justify-between border-border border-b-1">
           <p className="text-white font-bold text-xl">
             Welcome to Drind And Eat

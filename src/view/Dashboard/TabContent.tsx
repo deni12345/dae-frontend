@@ -24,7 +24,7 @@ const TabContent = ({
 
   return (
     <TabsContent value={value} className="bg-accent rounded-md" {...props}>
-      <div className="flex flex-col p-4 gap-4">{children}</div>
+      {children}
     </TabsContent>
   );
 };
