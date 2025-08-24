@@ -11,14 +11,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import type { GroupMenuItem, MenuItem } from "@/types/AppSidebar";
+import type { appSidebarGroups, MenuItem } from "@/types/AppSidebar";
 import { PanelRight } from "lucide-react";
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
 
 type AppSidebarProps = {
   title: string;
-  groups: GroupMenuItem[];
+  groups: appSidebarGroups[];
 };
 
 export function AppSidebar({ title, groups }: AppSidebarProps) {
@@ -33,7 +33,7 @@ export function AppSidebar({ title, groups }: AppSidebarProps) {
   );
 }
 
-function SidebarGroupMenu({ groups }: { groups: GroupMenuItem[] }) {
+function SidebarGroupMenu({ groups }: { groups: appSidebarGroups[] }) {
   return groups.map((group, index) => (
     <SidebarGroup key={index}>
       <SidebarGroupLabel>{group.title}</SidebarGroupLabel>

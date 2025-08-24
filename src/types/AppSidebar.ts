@@ -5,7 +5,7 @@ export type MenuItem = {
   onClick?: () => void;
 };
 
-export type GroupMenuItem = {
+export type AppSidebarGroup = {
   title: string;
   items: MenuItem[];
 };

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const api = createApi({
-  reducerPath: "api",
+export const healthAPI = createApi({
+  reducerPath: "health",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://jsonplaceholder.typicode.com",
   }),
@@ -12,4 +12,4 @@ export const api = createApi({
   }),
 });
 
-export const { useGetHealthQuery } = api;
+export const { useGetHealthQuery } = healthAPI;

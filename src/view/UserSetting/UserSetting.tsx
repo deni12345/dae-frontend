@@ -1,4 +1,6 @@
-const UserSetting = () => {
+import { memo } from "react";
+
+export const Settings = memo(() => {
   return (
     <div className="user-setting-view">
       <h1>User Settings</h1>
@@ -6,6 +8,4 @@ const UserSetting = () => {
       {/* Additional user setting components can be added here */}
     </div>
   );
-};
-
-export default UserSetting;
+});

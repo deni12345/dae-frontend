@@ -4,7 +4,7 @@ import React, { memo, type ReactElement } from "react";
 interface DashboardTabContentProps
   extends React.ComponentProps<typeof TabsContent> {
   value: string;
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }
 
 const TabContent = ({

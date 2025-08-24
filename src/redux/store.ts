@@ -1,14 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userSlice } from "./userSlice";
-import { api } from "@/api/apiService";
+import { healthAPI } from "@/api/health";
+import { ordersAPI } from "@/api/orders";
 
 export const store = configureStore({
   reducer: {
     user: userSlice.reducer,
-    [api.reducerPath]: api.reducer,
+    [healthAPI.reducerPath]: healthAPI.reducer,
+    [ordersAPI.reducerPath]: ordersAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware()
+      .concat(healthAPI.middleware)
+      .concat(ordersAPI.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

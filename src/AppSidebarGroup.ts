@@ -1,7 +1,7 @@
-import type { GroupMenuItem } from "@/types/AppSidebar";
+import type { AppSidebarGroup } from "@/types/AppSidebar";
 import { House, History, Trophy, User, Settings } from "lucide-react";
 
-export const menuItems: GroupMenuItem[] = [
+export const appSidebarGroups: AppSidebarGroup[] = [
   {
     title: "Navigation",
     items: [
