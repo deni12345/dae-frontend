@@ -1,12 +1,10 @@
-import { TabsContainer } from "@/components/app-tabs/AppTabs";
-import { memo, useEffect, useMemo, useState } from "react";
-import TabHeader from "./TabHeader";
-import TabContent from "./TabContent";
-import DashboardMenu from "./Menu";
-import { mockSheetTabs } from "./MockSheetData";
+import { memo, useMemo, useState } from "react";
+import DashboardMenu from "./DashboardMenu";
+import { mockSheetTabs } from "./MockMenuData";
 import { useGetOrdersInfiniteQuery } from "@/api/orders";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
+import { TabHeader, TabContent, TabsContainer } from "@/components";
 
 export const Dashboard = memo(() => {
   const [activeSheetTab, setActiveSheetTab] = useState<string>(
@@ -26,6 +24,7 @@ export const Dashboard = memo(() => {
     () => mockSheetTabs.map((tab) => tab.sheet),
     [mockSheetTabs]
   );
+
   const menu = useMemo(
     () =>
       mockSheetTabs.find((m) => m.sheet === activeSheetTab)?.menu ||
@@ -33,9 +32,9 @@ export const Dashboard = memo(() => {
     [activeSheetTab, mockSheetTabs]
   );
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <TabsContainer

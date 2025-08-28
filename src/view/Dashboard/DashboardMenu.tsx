@@ -1,17 +1,15 @@
-import { TabsContainer } from "@/components/app-tabs/AppTabs";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, Plus } from "lucide-react";
-import TabContent from "./TabContent";
-import TabHeader from "./TabHeader";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import MenuItemCard from "./MenuItemCard";
-import type { MenuTab, SheetMenu } from "./MockSheetData";
+import DishCard from "../../components/cards/DishCard";
+import type { MenuTab, SheetMenu } from "./MockMenuData";
+import { TabContent, TabHeader, TabsContainer } from "@/components";
 
 interface DashboardMenuProps {
   menu: SheetMenu;
@@ -46,28 +44,47 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
     );
   }, [selectedMenu]);
 
-  const loadMoreMenuItems = useCallback(
-    (api: CarouselApi, totalGroups: any) => {
-      if (!api) return;
+  useEffect(() => {
+    if (!api) return;
 
+    const handler = () => {
       setLoadedMenuItems((prev) => {
-        if (prev.length >= totalGroups.length) return prev;
+        if (prev.length >= groupMenuItems.length) {
+          api.off("slidesInView", handler);
+          return prev;
+        }
         const inView = api.slidesInView();
         return [...new Set([...prev, ...inView])];
       });
-    },
-    [api]
-  );
+    };
 
-  useEffect(() => {
-    if (!api) return;
-    const handler = () => loadMoreMenuItems(api, groupMenuItems);
     api.on("slidesInView", handler);
 
     return () => {
       api.off("slidesInView", handler);
     };
-  }, [api, loadMoreMenuItems, groupMenuItems]);
+  }, [api, groupMenuItems]);
+
+  const carouselItems = useMemo(() => {
+    return groupMenuItems.map((group, chunkIndex) => {
+      return (
+        <CarouselItem
+          key={chunkIndex}
+          className="lg:basis-1/2 pl-4 basis-10/12 grid"
+        >
+          <div className="grid grid-cols-2 grid-rows-2 gap-4">
+            {loadedMenuItems.includes(chunkIndex) ? (
+              group.map((item, itemIndex: number) => (
+                <DishCard item={item} key={itemIndex} />
+              ))
+            ) : (
+              <LoaderCircle className="animate-spin" />
+            )}
+          </div>
+        </CarouselItem>
+      );
+    });
+  }, [groupMenuItems, loadedMenuItems]);
 
   return (
     <div className="grid grid-rows-[2rem_minmax(0,1fr)] p-4 gap-4">
@@ -85,26 +102,13 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
       >
         <TabHeader tabs={menuTabs} />
         <TabContent value={activeMenuTab}>
-          <Carousel className="w-full" setApi={setApi}>
+          <Carousel
+            className="w-full"
+            setApi={setApi}
+            opts={{ dragFree: true }}
+          >
             <CarouselContent className="-ml-4 ">
-              {groupMenuItems.map((group, chunkIndex) => {
-                return (
-                  <CarouselItem
-                    key={chunkIndex}
-                    className="lg:basis-1/2 pl-4 basis-10/12 grid"
-                  >
-                    <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                      {loadedMenuItems.includes(chunkIndex) ? (
-                        group.map((item: any, itemIndex: number) => (
-                          <MenuItemCard item={item} key={itemIndex} />
-                        ))
-                      ) : (
-                        <LoaderCircle className="animate-spin" />
-                      )}
-                    </div>
-                  </CarouselItem>
-                );
-              })}
+              {carouselItems}
             </CarouselContent>
           </Carousel>
         </TabContent>
