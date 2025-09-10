@@ -3,7 +3,8 @@ import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 export type Order = {
   id: string;
   userName: string;
-  foodName: string;
+  food: string;
+  note: string;
   quantity: number;
   price: number;
   CreateAt: number;
@@ -16,14 +17,17 @@ export type Page = {
 };
 
 const TOTAL_ORDERS = 200;
-const PAGE_SIZE = 20;
 const now = Date.now();
+
 const orders = Array.from({ length: TOTAL_ORDERS })
   .map(
     (_, index): Order => ({
       id: `order-${index + 1}`,
       userName: `User ${index + 1}`,
-      foodName: `Food Item ${index + 1}`,
+      food: `Food Item ${index + 1}`,
+      note: `2025-09-07 7:30 PM – Order #2045: Customer John D. placed a delivery order for 3x Chicken Biryani, 
+      2x Garlic Naan, and 1x Mango Lassi; payment received online, scheduled delivery to 45 Elm Street at 8:15 PM, 
+      no special instructions noted.`,
       quantity: 1,
       price: index + 1 * 10,
       CreateAt: now - index * 1000 * 60 * 60,

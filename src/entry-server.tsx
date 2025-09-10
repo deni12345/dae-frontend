@@ -1,3 +1,4 @@
+import "./utils/i18n";
 import { StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";

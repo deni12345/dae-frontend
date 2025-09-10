@@ -8,9 +8,9 @@ interface MenuItemCardProps {
 
 const DishCard = ({ item }: MenuItemCardProps) => {
   return (
-    <div className="flex flex-col flex-wrap lg:flex-row lg:p-4  lg:gap-4 bg-white border gap-1 border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div className="flex flex-col flex-wrap lg:flex-row lg:p-4 lg:gap-4 bg-white border gap-1 border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
       <img
-        className="object-cover lg:rounded-lg h-auto w-full lg:w-35"
+        className="object-cover lg:rounded-lg h-auto w-full lg:w-25"
         src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Tumbler_of_cola_with_ice.jpg"
         alt="drink image"
       />

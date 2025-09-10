@@ -42,7 +42,7 @@ export const TabsContainer = memo(
       setLine({
         width: a.width,
         left: a.left - r.left,
-        top: l.bottom - r.top + 3,
+        top: l.bottom - r.top - 1.25,
       });
     }, [setLine, value]);
 

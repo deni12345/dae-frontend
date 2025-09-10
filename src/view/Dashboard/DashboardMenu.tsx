@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { use, useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, Plus } from "lucide-react";
 import {
@@ -18,7 +18,7 @@ interface DashboardMenuProps {
 
 const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
   const [activeMenuTab, setActiveMenuTab] = useState<string>(menuTabs[0]);
-  const [api, setApi] = useState<CarouselApi>();
+  const [api, setApi] = useState<CarouselApi>(undefined);
   const [loadedMenuItems, setLoadedMenuItems] = useState<number[]>([]);
 
   if (!menu) {
@@ -58,12 +58,13 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
       });
     };
 
+    handler();
     api.on("slidesInView", handler);
 
     return () => {
       api.off("slidesInView", handler);
     };
-  }, [api, groupMenuItems]);
+  }, [api, groupMenuItems, setLoadedMenuItems]);
 
   const carouselItems = useMemo(() => {
     return groupMenuItems.map((group, chunkIndex) => {
@@ -87,7 +88,7 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
   }, [groupMenuItems, loadedMenuItems]);
 
   return (
-    <div className="grid grid-rows-[2rem_minmax(0,1fr)] p-4 gap-4">
+    <div className="grid grid-rows-[2rem_minmax(0,1fr)] gap-4 p-4 bg-white rounded-lg">
       <header className="flex flex-row justify-between items-center">
         <h2 className="text-lg font-bold">Menu</h2>
         <Button>
@@ -103,13 +104,11 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
         <TabHeader tabs={menuTabs} />
         <TabContent value={activeMenuTab}>
           <Carousel
-            className="w-full"
+            className="w-full bg-white"
             setApi={setApi}
             opts={{ dragFree: true }}
           >
-            <CarouselContent className="-ml-4 ">
-              {carouselItems}
-            </CarouselContent>
+            <CarouselContent className="-ml-4">{carouselItems}</CarouselContent>
           </Carousel>
         </TabContent>
       </TabsContainer>

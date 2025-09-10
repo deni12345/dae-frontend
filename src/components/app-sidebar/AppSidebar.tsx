@@ -36,7 +36,9 @@ export function AppSidebar({ title, groups }: AppSidebarProps) {
 function SidebarGroupMenu({ groups }: { groups: AppSidebarGroup[] }) {
   return groups.map((group, index) => (
     <SidebarGroup key={index}>
-      <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[1rem]">
+        {group.title}
+      </SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenuWithIcons items={group.items} />
       </SidebarGroupContent>
@@ -50,7 +52,10 @@ function SidebarMenuWithIcons({ items }: { items: MenuItem[] }) {
       {items.map((item, index) => (
         <SidebarMenuItem key={index}>
           <Link to={item.href || "#"}>
-            <SidebarMenuButton onClick={item.onClick}>
+            <SidebarMenuButton
+              onClick={item.onClick}
+              className="text-[1rem] font-medium"
+            >
               <item.icon />
               {item.title}
             </SidebarMenuButton>
@@ -71,7 +76,7 @@ function SidebarHeaderWithIcon({ title }: { title: string }) {
     <SidebarHeader>
       <SidebarMenuButton
         onClick={handlerSidebarToggle}
-        className="whitespace-nowrap"
+        className="whitespace-nowrap text-[1rem] font-semibold"
       >
         <PanelRight />
         {title}

@@ -1,4 +1,5 @@
 import "./index.css";
+import "./utils/i18n";
 import { StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
 import { Provider } from "react-redux";

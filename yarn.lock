@@ -2450,15 +2450,17 @@ __metadata:
     cross-env: "npm:^10.0.0"
     depcheck: "npm:^1.4.7"
     embla-carousel-react: "npm:^8.6.0"
+    embla-carousel-wheel-gestures: "npm:^8.1.0"
     eslint: "npm:^9.25.0"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-react-refresh: "npm:^0.4.19"
     express: "npm:^5.1.0"
     globals: "npm:^16.0.0"
+    i18next: "npm:^25.4.2"
     lucide-react: "npm:^0.513.0"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
-    react-i18next: "npm:^15.5.2"
+    react-i18next: "npm:^15.7.3"
     react-redux: "npm:^9.2.0"
     react-router-dom: "npm:^7.6.2"
     redux: "npm:^5.0.1"
@@ -2618,6 +2620,17 @@ __metadata:
   peerDependencies:
     embla-carousel: 8.6.0
   checksum: 10c0/33d07e6df4d8dec9b4fc95858838ea2d5e5df078039c05b2a342c05ba4979d8d18564a1c607da445fed744daf969a0b5a90124ce487a854e86ced6f0458b51e9
+  languageName: node
+  linkType: hard
+
+"embla-carousel-wheel-gestures@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "embla-carousel-wheel-gestures@npm:8.1.0"
+  dependencies:
+    wheel-gestures: "npm:^2.2.5"
+  peerDependencies:
+    embla-carousel: ^8.0.0 || ~8.0.0-rc03
+  checksum: 10c0/35e177891088e654fcb4a907c0e617ed5d6d21da284c8ba1120218d195c879f6c4befe994332332e23bdfaffa08d8a688baeb3b48c775a5b9466ec1812533936
   languageName: node
   linkType: hard
 
@@ -3446,6 +3459,20 @@ __metadata:
     agent-base: "npm:^7.1.2"
     debug: "npm:4"
   checksum: 10c0/f729219bc735edb621fa30e6e84e60ee5d00802b8247aac0d7b79b0bd6d4b3294737a337b93b86a0bd9e68099d031858a39260c976dc14cdbba238ba1f8779ac
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^25.4.2":
+  version: 25.4.2
+  resolution: "i18next@npm:25.4.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.27.6"
+  peerDependencies:
+    typescript: ^5
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/f4f4e75f55c48f4af2036e0b03f2e3b141c60c441ef882f2ddf7f87c71352c25190472fe5414295f9a762faea926b1288c65ba782e4bead45855bb7aff159140
   languageName: node
   linkType: hard
 
@@ -4472,14 +4499,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^15.5.2":
-  version: 15.6.1
-  resolution: "react-i18next@npm:15.6.1"
+"react-i18next@npm:^15.7.3":
+  version: 15.7.3
+  resolution: "react-i18next@npm:15.7.3"
   dependencies:
     "@babel/runtime": "npm:^7.27.6"
     html-parse-stringify: "npm:^3.0.1"
   peerDependencies:
-    i18next: ">= 23.2.3"
+    i18next: ">= 25.4.1"
     react: ">= 16.8.0"
     typescript: ^5
   peerDependenciesMeta:
@@ -4489,7 +4516,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/10cd131005a70a493e307f4f710ea9921d5a955a5281064cad79162e5051e2bcfc119f50c7bee0fad06e33a1795308a006089d5b67969d52b66afbe149514305
+  checksum: 10c0/dc3ca1da9accb47f63b2049c94ff7a94ba92d76bad586aca7c2aa3b7a01c2d4e69d4363ff0cfa898cef22b109f2dd49864d6ac94cd9afbac485d44e70ed5a4d6
   languageName: node
   linkType: hard
 
@@ -5427,6 +5454,13 @@ __metadata:
   version: 3.1.0
   resolution: "void-elements@npm:3.1.0"
   checksum: 10c0/0b8686f9f9aa44012e9bd5eabf287ae0cde409b9a2854c5a2335cb83920c957668ac5876e3f0d158dd424744ac411a7270e64128556b451ed3bec875ef18534d
+  languageName: node
+  linkType: hard
+
+"wheel-gestures@npm:^2.2.5":
+  version: 2.2.48
+  resolution: "wheel-gestures@npm:2.2.48"
+  checksum: 10c0/03dcd4aa3df8a4cbfdee51a44fe7899a1e6019f0b43adf5ab21bbade1d5a9560dd5deb402dfcac8bf31f7bf64c663e36f08fdd8476c9712defc7e9aa0821327a
   languageName: node
   linkType: hard
 

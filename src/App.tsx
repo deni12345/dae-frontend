@@ -20,7 +20,7 @@ function App() {
             <AvatarFallback className="bg-white">RE</AvatarFallback>
           </Avatar>
         </header>
-        <div className="p-5 flex-1">
+        <div className="p-4 flex-1 bg-accent">
           <Outlet />
         </div>
       </main>
