@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "installCommand": "corepack use yarn@4.9.2 && yarn install",
+  "installCommand": "export COREPACK_HOME=/tmp/corepack && corepack enable && corepack use yarn@4.9.2 && yarn install",
   "buildCommand": "yarn build",
   "functions": {
     "api/index.js": {

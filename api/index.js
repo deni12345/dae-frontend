@@ -4,6 +4,7 @@ import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const isVercelEnv = process.env.VERCEL_ENV === "vercel";
 const isProduction = process.env.NODE_ENV === "production";
 const port = process.env.PORT || 3000;
 const base = process.env.BASE || "/";
@@ -73,5 +74,11 @@ app.use("*all", async (req, res) => {
     res.status(500).end(e.stack);
   }
 });
+
+if (!isVercelEnv) {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
 
 export default app;

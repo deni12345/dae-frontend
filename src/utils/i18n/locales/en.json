@@ -1,0 +1,12 @@
+{
+  "Label": {
+    "AllOrders": "All Orders",
+    "Loading": "Loading...",
+    "Menu": "Menu",
+    "NoSheets:": "No sheets available",
+    "ComingSoon": "New Feature Is Coming Soon"
+  },
+  "Button": {
+    "EditMenu": "Edit Menu"
+  }
+}

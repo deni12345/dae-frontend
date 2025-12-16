@@ -3,3 +3,5 @@ export * from "../AppSidebarGroup";
 export * from "./tab/TabHeader";
 export * from "./tab/TabContent";
 export * from "./tab/TabWithIndicator";
+export * from "./cards/OrderCard";
+export * from "./cards/DishCard";

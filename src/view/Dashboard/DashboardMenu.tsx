@@ -8,11 +8,12 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import DishCard from "../../components/cards/DishCard";
-import type { MenuTab, SheetMenu } from "./MockMenuData";
+import type { Menu, MenuType } from "./MockMenuData";
 import { TabContent, TabHeader, TabsContainer } from "@/components";
+import { t } from "i18next";
 
 interface DashboardMenuProps {
-  menu: SheetMenu;
+  menu: Menu;
   menuTabs: string[];
 }
 
@@ -31,7 +32,7 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
 
   const selectedMenu = useMemo(() => {
     return menuTabs.includes(activeMenuTab)
-      ? menu[activeMenuTab as MenuTab]
+      ? menu[activeMenuTab as MenuType]
       : [];
   }, [activeMenuTab, menu]);
 
@@ -90,10 +91,10 @@ const DashboardMenu = ({ menu, menuTabs }: DashboardMenuProps) => {
   return (
     <div className="grid grid-rows-[2rem_minmax(0,1fr)] gap-4 p-4 bg-white rounded-lg">
       <header className="flex flex-row justify-between items-center">
-        <h2 className="text-lg font-bold">Menu</h2>
+        <h2 className="text-lg font-bold">{t("Label.Menu")}</h2>
         <Button>
           <Plus />
-          Add Menu Tab
+          {t("Button.EditMenu")}
         </Button>
       </header>
       <TabsContainer
